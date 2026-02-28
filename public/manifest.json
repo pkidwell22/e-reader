@@ -1,0 +1,25 @@
+{
+  "name": "E-Reader",
+  "short_name": "E-Reader",
+  "description": "A beautiful, minimal e-reader that supports 20+ document formats. Upload any file and read it in a distraction-free environment.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF6F0",
+  "theme_color": "#8B7355",
+  "orientation": "any",
+  "categories": ["books", "education", "productivity"],
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

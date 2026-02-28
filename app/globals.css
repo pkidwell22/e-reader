@@ -1,26 +1,332 @@
+/* ─── Google Fonts ──────────────────────────────────────────────────── */
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,700;1,7..72,400;1,7..72,700&family=JetBrains+Mono:wght@400&display=swap");
+
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* ─── Tailwind v4 Theme Tokens ──────────────────────────────────────── */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: "Bricolage Grotesque", system-ui, sans-serif;
+  --font-serif: "Literata", Georgia, serif;
+  --font-mono: "JetBrains Mono", Menlo, monospace;
+
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-tertiary: var(--bg-tertiary);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-border: var(--border);
+
+  --ease-page: cubic-bezier(0.25, 0.1, 0.25, 1);
+
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 12px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ─── Light Theme (Default) ─────────────────────────────────────────── */
+:root {
+  --bg-primary: #fafaf7;
+  --bg-secondary: #f3f2ee;
+  --bg-tertiary: #eaeae5;
+  --text-primary: #1a1a1a;
+  --text-secondary: #6b6b6b;
+  --text-tertiary: #9b9b9b;
+  --accent: #4a6fa5;
+  --accent-hover: #3d5d8a;
+  --border: #e5e5e0;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+/* ─── Dark Theme ────────────────────────────────────────────────────── */
+[data-theme="dark"] {
+  --bg-primary: #141419;
+  --bg-secondary: #1c1c24;
+  --bg-tertiary: #262630;
+  --text-primary: #e8e8ed;
+  --text-secondary: #8e8e9a;
+  --text-tertiary: #5c5c6a;
+  --accent: #7ca1d4;
+  --accent-hover: #9bb5df;
+  --border: #2a2a36;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+/* ─── Sepia Theme ───────────────────────────────────────────────────── */
+[data-theme="sepia"] {
+  --bg-primary: #f5ecd7;
+  --bg-secondary: #ede3ca;
+  --bg-tertiary: #e2d8bd;
+  --text-primary: #3d3226;
+  --text-secondary: #7a6b56;
+  --text-tertiary: #a89880;
+  --accent: #8b6f4e;
+  --accent-hover: #735a3d;
+  --border: #ddd2b9;
+  --shadow: 0 1px 3px rgba(60, 40, 10, 0.06);
+  --shadow-lg: 0 8px 32px rgba(60, 40, 10, 0.12);
+}
+
+/* ─── Base Styles ───────────────────────────────────────────────────── */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  transition: background-color 300ms ease, color 300ms ease;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* ─── Theme Transition ──────────────────────────────────────────────── */
+[data-theme] * {
+  transition: background-color 300ms ease, color 300ms ease,
+    border-color 300ms ease, box-shadow 300ms ease;
+}
+
+/* ─── Typography ────────────────────────────────────────────────────── */
+.font-reading {
+  font-family: "Literata", Georgia, serif;
+}
+
+.font-ui {
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+}
+
+.font-code {
+  font-family: "JetBrains Mono", Menlo, monospace;
+}
+
+/* ─── Reading Content Styles ────────────────────────────────────────── */
+.reading-content {
+  font-family: "Literata", Georgia, serif;
+  font-size: var(--reader-font-size, 18px);
+  line-height: var(--reader-line-height, 1.75);
+  color: var(--text-primary);
+  max-width: var(--reader-max-width, 680px);
+  margin: 0 auto;
+  hyphens: manual;
+  overflow-wrap: break-word;
+}
+
+.reading-content h1 {
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin: 1.5em 0 0.75em;
+}
+
+.reading-content h2 {
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin: 1.25em 0 0.5em;
+}
+
+.reading-content h3 {
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 1em 0 0.5em;
+}
+
+.reading-content p {
+  margin: 0 0 1em;
+}
+
+.reading-content blockquote {
+  border-left: 3px solid var(--accent);
+  padding-left: 1em;
+  margin: 1em 0;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.reading-content pre {
+  font-family: "JetBrains Mono", Menlo, monospace;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  background: var(--bg-secondary);
+  border-radius: 6px;
+  padding: 1em;
+  overflow-x: auto;
+  margin: 1em 0;
+}
+
+.reading-content code {
+  font-family: "JetBrains Mono", Menlo, monospace;
+  font-size: 0.9em;
+  background: var(--bg-secondary);
+  border-radius: 3px;
+  padding: 0.15em 0.4em;
+}
+
+.reading-content pre code {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+}
+
+.reading-content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
+  margin: 24px auto;
+  cursor: pointer;
+}
+
+.reading-content figcaption {
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  text-align: center;
+  margin-top: -16px;
+  margin-bottom: 24px;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+}
+
+.reading-content ul,
+.reading-content ol {
+  padding-left: 1.5em;
+  margin: 0.75em 0;
+}
+
+.reading-content li {
+  margin: 0.25em 0;
+}
+
+.reading-content hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2em 0;
+}
+
+.reading-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+  font-size: 0.9375rem;
+}
+
+.reading-content th,
+.reading-content td {
+  border: 1px solid var(--border);
+  padding: 0.5em 0.75em;
+  text-align: left;
+}
+
+.reading-content th {
+  background: var(--bg-secondary);
+  font-weight: 600;
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+}
+
+/* ─── Scrollbar Styling ─────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-tertiary);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
+}
+
+/* ─── Selection ─────────────────────────────────────────────────────── */
+::selection {
+  background: var(--accent);
+  color: white;
+}
+
+[data-theme="dark"] ::selection {
+  background: var(--accent);
+  color: #141419;
+}
+
+[data-theme="sepia"] ::selection {
+  background: var(--accent);
+  color: #f5ecd7;
+}
+
+/* ─── Reduced Motion ────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ─── Skeleton Loading Animation ────────────────────────────────────── */
+@keyframes skeleton-pulse {
+  0%,
+  100% {
+    background-color: var(--bg-tertiary);
+  }
+  50% {
+    background-color: var(--bg-secondary);
+  }
+}
+
+.skeleton {
+  animation: skeleton-pulse 1.5s ease-in-out infinite;
+  border-radius: 4px;
+}
+
+/* ─── Utility: Hide scrollbar ───────────────────────────────────────── */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ─── Card Entrance Animation ───────────────────────────────────────── */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 300ms ease-out;
 }

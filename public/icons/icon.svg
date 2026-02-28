@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="96" fill="#8B7355"/>
+  <g transform="translate(128, 96)">
+    <!-- Open book icon -->
+    <path d="M128 0 C80 0 32 16 0 48 L0 288 C32 256 80 240 128 240 C176 240 224 256 256 288 L256 48 C224 16 176 0 128 0Z" fill="#FAF6F0" opacity="0.9"/>
+    <path d="M128 0 C176 0 224 16 256 48 L256 288 C224 256 176 240 128 240" fill="#F5EDE0" opacity="0.9"/>
+    <!-- Page lines -->
+    <line x1="32" y1="80" x2="112" y2="80" stroke="#8B7355" stroke-width="6" opacity="0.3"/>
+    <line x1="32" y1="112" x2="96" y2="112" stroke="#8B7355" stroke-width="6" opacity="0.3"/>
+    <line x1="32" y1="144" x2="104" y2="144" stroke="#8B7355" stroke-width="6" opacity="0.3"/>
+    <line x1="32" y1="176" x2="88" y2="176" stroke="#8B7355" stroke-width="6" opacity="0.3"/>
+    <line x1="144" y1="80" x2="224" y2="80" stroke="#8B7355" stroke-width="6" opacity="0.3"/>
+    <line x1="144" y1="112" x2="208" y2="112" stroke="#8B7355" stroke-width="6" opacity="0.3"/>
+    <line x1="144" y1="144" x2="216" y2="144" stroke="#8B7355" stroke-width="6" opacity="0.3"/>
+  </g>
+</svg>
